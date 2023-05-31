@@ -23,12 +23,13 @@ dependencies {
     implementation("io.micronaut:micronaut-http-client")
     implementation("io.micronaut:micronaut-jackson-databind")
     implementation("io.micronaut:micronaut-validation")
-    implementation("io.micronaut.acme:micronaut-acme")
+//    implementation("io.micronaut.acme:micronaut-acme")
     implementation("io.micronaut.azure:micronaut-azure-cosmos")
     implementation("io.micronaut.data:micronaut-data-azure-cosmos")
     implementation("io.micronaut.elasticsearch:micronaut-elasticsearch")
     implementation("io.micronaut.flyway:micronaut-flyway")
-    implementation("io.micronaut.kafka:micronaut-kafka")
+//    implementation("io.micronaut.kafka:micronaut-kafka")
+    implementation("ch.qos.logback:logback-classic")
     implementation("io.micronaut.kotlin:micronaut-kotlin-runtime")
     implementation("io.micronaut.reactor:micronaut-reactor")
     implementation("io.micronaut.reactor:micronaut-reactor-http-client")
@@ -37,7 +38,6 @@ dependencies {
     implementation("jakarta.annotation:jakarta.annotation-api")
     implementation("org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlinVersion}")
-    runtimeOnly("ch.qos.logback:logback-classic")
     runtimeOnly("com.fasterxml.jackson.module:jackson-module-kotlin")
 }
 

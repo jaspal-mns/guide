@@ -3,15 +3,21 @@ micronaut:
     name: guide
   server:
     ssl:
-      enabled: 'true'
+      enabled: 'false'
   security:
     authentication: bearer
     token:
       jwt:
         signatures:
-          secret:
-            generator:
-              secret: ${JWT_GENERATOR_SIGNATURE_SECRET:pleaseChangeThisSecretForANewOne}
+          jwks:
+            identity:
+              url: http://localhost:8085/auth/realms/default/protocol/openid-connect/certs
+              key-type: EC
+    intercept-url-map:
+      - pattern: /guide/**
+        access:
+          - isAnonymous()
+
 netty:
   default:
     allocator:
@@ -28,7 +34,5 @@ azure:
     database:
       database-name: myDb
       update-policy: NONE
-acme:
-  enabled: 'true'
-  tos-agree: 'true'
+
 elasticsearch.httpHosts: http://localhost:9200,http://127.0.0.2:9200
