@@ -1,6 +1,6 @@
 applicationType: default
-defaultPackage: com.soul
+defaultPackage: com.guide
 testFramework: junit
-sourceLanguage: kotlin
+sourceLanguage: java
 buildTool: gradle
 features: [acme, annotation-api, app-name, azure-cosmos-db, data, data-azure-cosmos, elasticsearch, flyway, github-workflow-azure-container-instance-graalvm, gradle, http-client, jackson-databind, jib, junit, kafka, kotlin, kotlin-application, kotlin-build, logback, micronaut-build, micronaut-validation, netty-server, openapi, reactor, reactor-http-client, readme, security-annotations, security-jwt, shade, test-resources, yaml]
