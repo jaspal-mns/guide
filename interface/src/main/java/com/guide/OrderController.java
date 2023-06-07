@@ -1,10 +1,9 @@
 package com.guide;
 
 import com.guide.entity.Order;
-import io.micronaut.http.HttpHeaders;
 import io.micronaut.http.HttpResponse;
-import io.micronaut.http.MutableHttpResponse;
 import io.micronaut.http.annotation.Controller;
+import io.micronaut.http.annotation.Delete;
 import io.micronaut.http.annotation.Get;
 import io.micronaut.http.annotation.Post;
 import io.micronaut.http.annotation.Produces;
@@ -26,10 +25,21 @@ public class OrderController {
 
     @Post(uri="/")
     public HttpResponse<Void> createOrder(OrderCmd.OrderCreateCmd orderCreateCmd) {
-       var orderId =  orderHandler.handle(orderCreateCmd);
+       var orderId =  orderHandler.createOrder(orderCreateCmd);
         var uri = UriBuilder.of("/orders/").path(orderId).build();
-        MutableHttpResponse<Void> httpResponse = HttpResponse.created(uri);
-        httpResponse.header(HttpHeaders.LOCATION, uri.toString());
-        return httpResponse;
+        return HttpResponse.created(uri);
+    }
+
+    @Post(uri="/{orderId}/lines")
+    public HttpResponse<Void> addLine(String orderId, OrderCmd.AddLineCmd addLineCmd) {
+        orderHandler.addLine(orderId , addLineCmd);
+        var uri = UriBuilder.of("/orders/").path(orderId).build();
+        return HttpResponse.created(uri);
+    }
+
+    @Delete(uri="/{orderId}/lines/{lineId}")
+    public HttpResponse<Void> deleteLine(String orderId, String lineId) {
+        orderHandler.deleteLine(orderId , lineId);
+        return HttpResponse.noContent();
     }
 }
